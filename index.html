@@ -74,32 +74,51 @@
 
         <!-- Prévisualisation -->
         <div id="cvPreview" class="mt-6 bg-gray-200 p-4 rounded">
+            <!-- Header -->
+            <div class="flex items-center mb-4">
+                <img id="prevProfilePic" src="" alt="Photo de profil" class="w-24 h-24 rounded-full mr-4">
+                <div>
+                    <h3 class="text-2xl font-semibold" id="prevName"></h3>
+                    <p class="text-lg" id="prevJob"></p>
+                </div>
+            </div>
 
-            <h1 align="center">  CURRICULUM VITAE 
-            </h1>
-            
-            <h3 class="text-xl font-semibold" id="prevName"></h3>
-            <p id="prevAge"></p>
-            <p id="prevGender"></p>
-            <p id="prevEmail"></p>
-            <p id="prevPhone"></p>
-            <p id="prevJob"></p>
-            <p id="prevAddress"></p>
-            <p id="prevDescription"></p>
-            <p id="prevCompany"></p>
-            <p id="prevPosition"></p>
-            <p id="prevDuration"></p>
-            <p id="prevExperienceDesc"></p>
-            <p id="prevDegree"></p>
-            <p id="prevInstitution"></p>
-            <p id="prevGraduationYear"></p>
-            <p id="prevSkills"></p>
-            <p id="prevInterests"></p>
-            <p id="prevReferences"></p>
-            <p id="prevLanguages"></p>
-            <p id="prevStatus"></p>
+            <!-- Sections -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <!-- Section gauche : Informations personnelles -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-2">Informations Personnelles</h3>
+                    <p id="prevAge"></p>
+                    <p id="prevGender"></p>
+                    <p id="prevEmail"></p>
+                    <p id="prevPhone"></p>
+                    <p id="prevAddress"></p>
+                    <h3 class="text-xl font-semibold mt-4 mb-2">Centre d'Intérêts</h3>
+                    <p id="prevInterests"></p>
+                    <h3 class="text-xl font-semibold mt-4 mb-2">Langues</h3>
+                    <p id="prevLanguages"></p>
+                </div>
 
-           
+                <!-- Section droite : Autres informations -->
+                <div>
+                    <h3 class="text-xl font-semibold mb-2">Description</h3>
+                    <p id="prevDescription"></p>
+                    <h3 class="text-xl font-semibold mt-4 mb-2">Expériences Professionnelles</h3>
+                    <p id="prevCompany"></p>
+                    <p id="prevPosition"></p>
+                    <p id="prevDuration"></p>
+                    <p id="prevExperienceDesc"></p>
+                    <h3 class="text-xl font-semibold mt-4 mb-2">Formation</h3>
+                    <p id="prevDegree"></p>
+                    <p id="prevInstitution"></p>
+                    <p id="prevGraduationYear"></p>
+                    <h3 class="text-xl font-semibold mt-4 mb-2">Compétences</h3>
+                    <p id="prevSkills"></p>
+                    <h3 class="text-xl font-semibold mt-4 mb-2">Références</h3>
+                    <p id="prevReferences"></p>
+                    <p id="prevStatus"></p>
+                </div>
+            </div>
         </div>
         
         <button onclick="downloadPDF()" class="mt-4 bg-green-500 text-white p-2 rounded">Télécharger en PDF</button>

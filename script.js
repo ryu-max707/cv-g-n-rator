@@ -56,12 +56,12 @@ function validateForm() {
 }
 }
 
-function clearCV() {
-    localStorage.removeItem('cvData');
-    document.getElementById('fullName').value = '';
-    document.getElementById('age').value = '';
-    document.getElementById
-}
+// function clearCV() {
+//     localStorage.removeItem('cvData');
+//     document.getElementById('fullName').value = '';
+//     document.getElementById('age').value = '';
+//     document.getElementById
+// }
 
 function updatePreview() {
     let cvData = {
@@ -84,14 +84,12 @@ function updatePreview() {
         interests: document.getElementById('interests').value,
         references: document.getElementById('references').value,
         languages: document.getElementById('languages').value,
-        status: document.getElementById('status').value
-
-    
+        status: document.getElementById('status').value,
+        profilePic: document.getElementById('profilePic').files[0]
     };
+
     localStorage.setItem('cvData', JSON.stringify(cvData));
     displayCV();
-
-   
 
     document.getElementById('prevName').textContent = cvData.fullName;
     document.getElementById('prevAge').textContent = 'Âge: ' + cvData.age;
@@ -113,6 +111,14 @@ function updatePreview() {
     document.getElementById('prevReferences').textContent = 'Nom, poste et contact des références professionnelles: ' + cvData.references;
     document.getElementById('prevLanguages').textContent = 'Langues maîtrisées et niveau de compétence: ' + cvData.languages;
     document.getElementById('prevStatus').textContent = 'Situation actuelle: ' + cvData.status;
+
+    if (cvData.profilePic) {
+        let reader = new FileReader();
+        reader.onload = function (e) {
+            document.getElementById('prevProfilePic').src = e.target.result;
+        };
+        reader.readAsDataURL(cvData.profilePic);
+    }
 }
 
 function displayCV() {
@@ -196,6 +202,7 @@ function downloadPDF() {
 
     let cvData = JSON.parse(localStorage.getItem('cvData'));
     if (cvData) {
+        doc.text('Curriculum Vitae', 10, 5, center);
         doc.text(`Nom: ${cvData.fullName}`, 10, 10);
         doc.text(`Âge: ${cvData.age}`, 10, 20);
         doc.text(`Sexe: ${cvData.gender}`, 10, 30);
