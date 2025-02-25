@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"  content="width=device-width, initial-scale=1.0">
+    <title>Générateur de CV</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+    <script src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css">
+</head> 
+<body class="bg-gray-100 p-6"> 
+    <div class="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow-lg">
+        <h2 class="text-2xl font-bold text-center mb-6">Générateur de CV</h2>
+        
+        <!-- Formulaire -->
+         <h3> Information Personnels</h3>
+
+        <form id="cvForm" class="grid grid-cols-1 md:grid-cols-2 gap-4" oninput="updatePreview()">
+            <input type="text" id="fullName" placeholder="Nom complet" class="p-2 border rounded" required>
+            <input type="number" id="age" placeholder="Âge (18-65)" class="p-2 border rounded" min="18" max="65" required>
+            <select id="gender" class="p-2 border rounded">
+                <option value="">Sexe</option>
+                <option value="Homme">Homme</option>
+                <option value="Femme">Femme</option>
+            </select>
+            <input type="text" id="jobTitle" placeholder="Titre du poste" class="p-2 border rounded">
+            <input type="text" id="status" placeholder="Situation actuelle" class="p-2 border rounded">
+            <textarea id="description" placeholder="Brève description" class="p-2 border rounded col-span-2"></textarea>
+            <input type="email" id="email" placeholder="Email" class="p-2 border rounded" required>
+            <input type="tel" id="phone" placeholder="Téléphone" class="p-2 border rounded" required>
+            <input type="text" id="address" placeholder="Adresse" class="p-2 border rounded">
+            <input type="file" id="profilePic" class="p-2 border rounded">
+            
+
+              
+             <h3> Information professionnelles</h3> 
+            <!-- Expériences professionnelles -->
+            <input type="text" id="company" placeholder="Nom de l'entreprise" class="p-2 border rounded">
+            <input type="text" id="position" placeholder="Poste occupé" class="p-2 border rounded">
+            <input type="text" id="duration" placeholder="Durée" class="p-2 border rounded">
+            <textarea id="experienceDesc" placeholder="Description des missions" class="p-2 border rounded col-span-2"></textarea>
+
+
+            <h3> Formation</h3>
+            <!-- Formation -->
+            <input type="text" id="degree" placeholder="Diplôme obtenu" class="p-2 border rounded">
+            <input type="text" id="institution" placeholder="Établissement" class="p-2 border rounded">
+            <input type="number" id="graduationYear" placeholder="Année d'obtention" class="p-2 border rounded">
+            
+
+            <h3> Compétences </h3>
+            <!-- Compétences -->
+            <textarea id="skills" placeholder="Compétences clés avec niveau de maîtrise" class="p-2 border rounded col-span-2"></textarea>
+            
+
+            <h3> Centre D'interets</h3>
+            <!-- Centres d’intérêt -->
+            <textarea id="interests" placeholder="Loisirs et passions" class="p-2 border rounded col-span-2"></textarea>
+
+
+            <h3> Références</h3>
+            <!-- Références -->
+            <textarea id="references" placeholder="Nom, poste et contact des références professionnelles" class="p-2 border rounded col-span-2"></textarea>
+            
+            <h3> Langues</h3>
+            <!-- Langues -->
+            <textarea id="languages" placeholder="Langues maîtrisées et niveau de compétence" class="p-2 border rounded col-span-2"></textarea>
+
+            <button type="button" onclick="saveCV()" class="bg-blue-500 text-white p-2 rounded col-span-2">Prévisualiser</button>
+        </form>
+
+        <!-- Prévisualisation -->
+        <div id="cvPreview" class="mt-6 bg-gray-200 p-4 rounded">
+
+            <h1 align="center">  CURRICULUM VITAE 
+            </h1>
+            
+            <h3 class="text-xl font-semibold" id="prevName"></h3>
+            <p id="prevAge"></p>
+            <p id="prevGender"></p>
+            <p id="prevEmail"></p>
+            <p id="prevPhone"></p>
+            <p id="prevJob"></p>
+            <p id="prevAddress"></p>
+            <p id="prevDescription"></p>
+            <p id="prevCompany"></p>
+            <p id="prevPosition"></p>
+            <p id="prevDuration"></p>
+            <p id="prevExperienceDesc"></p>
+            <p id="prevDegree"></p>
+            <p id="prevInstitution"></p>
+            <p id="prevGraduationYear"></p>
+            <p id="prevSkills"></p>
+            <p id="prevInterests"></p>
+            <p id="prevReferences"></p>
+            <p id="prevLanguages"></p>
+            <p id="prevStatus"></p>
+
+           
+        </div>
+        
+        <button onclick="downloadPDF()" class="mt-4 bg-green-500 text-white p-2 rounded">Télécharger en PDF</button>
+    </div>
+
+
+ 
+
+        
+     
+</body>
+</html>
