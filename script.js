@@ -54,6 +54,14 @@ function validateForm() {
 
     return isValid;
 }
+}
+
+function clearCV() {
+    localStorage.removeItem('cvData');
+    document.getElementById('fullName').value = '';
+    document.getElementById('age').value = '';
+    document.getElementById
+}
 
 function updatePreview() {
     let cvData = {
@@ -132,7 +140,33 @@ function displayCV() {
     }
 }
 
-
+function loadCV() {
+    let cvData = JSON.parse(localStorage.getItem('cvData'));
+    if (cvData) {
+        document.getElementById('fullName').value = cvData.fullName;
+        document.getElementById('age').value = cvData.age;
+        document.getElementById('gender').value = cvData.gender;
+        document.getElementById('email').value = cvData.email;
+        document.getElementById('phone').value = cvData.phone;
+        document.getElementById('jobTitle').value = cvData.jobTitle;
+        document.getElementById('address').value = cvData.address;
+        document.getElementById('description').value = cvData.description;
+        document.getElementById('company').value = cvData.company;
+        document.getElementById('position').value = cvData.position;
+        document.getElementById('duration').value = cvData.duration;
+        document.getElementById('experienceDesc').value = cvData.experienceDesc;
+        document.getElementById('degree').value = cvData.degree;
+        document.getElementById('institution').value = cvData.institution;
+        document.getElementById('graduationYear').value = cvData.graduationYear;
+        document.getElementById('skills').value = cvData.skills;
+        document.getElementById('interests').value = cvData.interests;
+        document.getElementById('references').value = cvData.references;
+        document.getElementById('languages').value = cvData.languages;
+        document.getElementById('status').value = cvData.status;
+    } else {
+        alert("Aucune donnée de CV trouvée dans le local storage.");
+    }
+}
 
 document.addEventListener('DOMContentLoaded', displayCV);
 document.getElementById('fullName').addEventListener('input', updatePreview);
@@ -155,7 +189,6 @@ document.getElementById('interests').addEventListener('input', updatePreview);
 document.getElementById('references').addEventListener('input', updatePreview);
 document.getElementById('languages').addEventListener('input', updatePreview);
 document.getElementById('status').addEventListener('input', updatePreview);
-}
 
 function downloadPDF() {
     const { jsPDF } = window.jspdf;
@@ -184,5 +217,4 @@ function downloadPDF() {
         doc.text(`Langues maîtrisées et niveau de compétence: ${cvData.languages}`, 10, 190);
     }
     doc.save("CV.pdf");
-}
-
+};
